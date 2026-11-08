@@ -30,26 +30,30 @@ NevaraFresh es una cadena de supermercados con 85 tiendas en 5 ciudades. Cada ti
 
 ## Alcance
 
-mvp que contiene funcionalidades especificadas
+mvp visual (proximo, backend integrado) realizado en flutter con los requerimientos especificados
+
 
 ### Incluye
 
-- Inicio de sesión con correo y contraseña, con acceso distinto para administrador y cajero.
+- Inicio de sesión con correo y contraseña, con acceso distinto para administrador y cajero, y acceso de demostración para cada rol.
 - Registro de ventas: catálogo de la tienda con búsqueda y filtro por categoría, venta en curso con cantidades y total, confirmación y descuento automático de existencias.
 - Consulta de las existencias de su tienda y de sus propias ventas, para el cajero.
 - Resumen de la cadena para el administrador: productos registrados, productos en bajo stock, ventas del día y de la semana, y aviso de productos por agotarse.
 - Inventario por tienda con búsqueda, filtros por categoría y tienda, y estado de cada producto: Disponible, Bajo stock o Agotado.
-- Agregar, editar y eliminar productos.
+- Agregar, editar y eliminar productos. Al editar, el administrador define el mínimo de existencias del producto en cada tienda.
 - Reposición en un solo paso: las unidades se suman de inmediato a las existencias de una tienda y la reposición queda registrada.
 - Historial de ventas de la cadena con búsqueda y filtros por tienda y fecha.
 
 ### No incluye
 
+- Crear tiendas y cuentas de usuario: vienen cargadas de antemano.
+- Método de pago y descuentos en la venta.
 - Exportar el historial de ventas a un archivo.
 - Recuperación de contraseña.
 - Reposición en dos pasos (pedido pendiente y recepción posterior).
 - Pronóstico de demanda y sugerencias automáticas de pedido.
-- Sensores de temperatura, pagos con tarjeta y tienda en línea que era a grandes rasgos el problema inicial.
+- Conexión con los sistemas de caja e inventario que ya usan las tiendas.
+- Sensores de temperatura, pagos con tarjeta y tienda en línea.
 - Uso desde el celular.
 
 ## Restricciones
@@ -57,7 +61,6 @@ mvp que contiene funcionalidades especificadas
 - Equipo de cinco integrantes.
 - La app se usa en computador.
 - En la entrega del prototipo los datos son simulados y deben ser coherentes con el modelo de datos del equipo.
-
 
 
 ## Historial
