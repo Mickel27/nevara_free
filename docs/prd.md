@@ -30,6 +30,8 @@ NevaraFresh es una cadena de supermercados con 85 tiendas en 5 ciudades. Cada ti
 
 ## Alcance
 
+mvp que contiene funcionalidades especificadas
+
 ### Incluye
 
 - Inicio de sesión con correo y contraseña, con acceso distinto para administrador y cajero.
@@ -47,8 +49,7 @@ NevaraFresh es una cadena de supermercados con 85 tiendas en 5 ciudades. Cada ti
 - Recuperación de contraseña.
 - Reposición en dos pasos (pedido pendiente y recepción posterior).
 - Pronóstico de demanda y sugerencias automáticas de pedido.
-- Conexión con los sistemas de caja e inventario que ya usan las tiendas.
-- Sensores de temperatura, pagos con tarjeta y tienda en línea.
+- Sensores de temperatura, pagos con tarjeta y tienda en línea que era a grandes rasgos el problema inicial.
 - Uso desde el celular.
 
 ## Restricciones
@@ -57,13 +58,7 @@ NevaraFresh es una cadena de supermercados con 85 tiendas en 5 ciudades. Cada ti
 - La app se usa en computador.
 - En la entrega del prototipo los datos son simulados y deben ser coherentes con el modelo de datos del equipo.
 
-## Preguntas abiertas
 
-- ¿Cuál es la fecha de la entrega final?
-- ¿Quién define el mínimo de existencias de cada producto en cada tienda, y en qué momento?
-- ¿Quién crea las tiendas y las cuentas de cajeros y administradores?
-- ¿La venta registra el método de pago y aplica descuentos? El modelo de datos tiene esos campos, pero el diseño no los muestra.
-- ¿El acceso de demostración (entrar como administrador o como cajero sin cuenta) entra en la primera versión?
 
 ## Historial
 
