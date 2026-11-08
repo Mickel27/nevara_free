@@ -1,7 +1,7 @@
 ---
 id: F-04
 titulo: Resumen de la cadena
-version: 0.1.0
+version: 0.2.0
 fecha: 2026-11-07
 estado: borrador
 autores: [Jeanfer Rivera, Santiago Samboni, Miguel Ángel Blanco, Luis Miguel Delgado, Santiago Sierra]
@@ -14,6 +14,10 @@ depende_de: [F-01]
 ## Objetivo
 
 El administrador ve de un vistazo cómo van las tiendas y qué productos están por agotarse.
+
+## Historia de usuario
+
+**Como** administrador, **quiero** ver un resumen de la cadena, **para** detectar a tiempo los productos por agotarse.
 
 ## Flujo principal
 
@@ -45,12 +49,37 @@ El administrador ve de un vistazo cómo van las tiendas y qué productos están 
 
 ## Criterios de aceptación
 
-- **CA-1** Dado que Sede Norte tiene 3 productos en bajo stock y 1 agotado, cuando el administrador abre el Dashboard, entonces ve el aviso "Sede Norte: 3 productos en bajo stock y 1 agotado".
-- **CA-2** Dado "Pan tajado 500 g" con 0 existencias y mínimo 12 en Sede Norte, cuando el administrador revisa la lista, entonces lo ve como "Agotado" con "0 / 12".
-- **CA-3** Dado el Dashboard abierto, cuando el administrador elige "Sede Sur", entonces los indicadores y la lista muestran solo datos de Sede Sur.
-- **CA-4** Dado el Dashboard abierto, cuando el administrador elige "Ver inventario", entonces se abre el inventario.
-- **CA-5** Dado que ningún producto está bajo su mínimo, cuando el administrador abre el Dashboard, entonces no ve el aviso y la lista dice "Todos los productos tienen existencias suficientes".
-- **CA-6** Dado que los datos no se pueden cargar, cuando el administrador abre el Dashboard, entonces ve "No se pudo cargar el resumen" y puede reintentar.
+```gherkin
+Escenario: CA-1
+  Dado que Sede Norte tiene 3 productos en bajo stock y 1 agotado
+  Cuando el administrador abre el Dashboard
+  Entonces ve el aviso "Sede Norte: 3 productos en bajo stock y 1 agotado"
+
+Escenario: CA-2
+  Dado "Pan tajado 500 g" con 0 existencias y mínimo 12 en Sede Norte
+  Cuando el administrador revisa la lista
+  Entonces lo ve como "Agotado" con "0 / 12"
+
+Escenario: CA-3
+  Dado el Dashboard abierto
+  Cuando el administrador elige "Sede Sur"
+  Entonces los indicadores y la lista muestran solo datos de Sede Sur
+
+Escenario: CA-4
+  Dado el Dashboard abierto
+  Cuando el administrador elige "Ver inventario"
+  Entonces se abre el inventario
+
+Escenario: CA-5
+  Dado que ningún producto está bajo su mínimo
+  Cuando el administrador abre el Dashboard
+  Entonces no ve el aviso y la lista dice "Todos los productos tienen existencias suficientes"
+
+Escenario: CA-6
+  Dado que los datos no se pueden cargar
+  Cuando el administrador abre el Dashboard
+  Entonces ve "No se pudo cargar el resumen" y puede reintentar
+```
 
 ## Fuera de alcance
 
@@ -64,3 +93,4 @@ El administrador ve de un vistazo cómo van las tiendas y qué productos están 
 ## Historial
 
 - 0.1.0 · 2026-11-07 · Primera versión.
+- 0.2.0 · 2026-11-07 · Se agrega la historia de usuario y los criterios de aceptación pasan a Gherkin.

@@ -1,7 +1,7 @@
 ---
 id: F-11
 titulo: Mis ventas
-version: 0.1.0
+version: 0.2.0
 fecha: 2026-11-07
 estado: borrador
 autores: [Jeanfer Rivera, Santiago Samboni, Miguel Ángel Blanco, Luis Miguel Delgado, Santiago Sierra]
@@ -14,6 +14,10 @@ depende_de: [F-02]
 ## Objetivo
 
 El cajero revisa las ventas que él mismo registró hoy.
+
+## Historia de usuario
+
+**Como** cajero, **quiero** ver las ventas que registré hoy, **para** revisar mi trabajo del día.
 
 ## Flujo principal
 
@@ -41,10 +45,27 @@ El cajero revisa las ventas que él mismo registró hoy.
 
 ## Criterios de aceptación
 
-- **CA-1** Dado que Carlos Ruiz registró las ventas V-1042 y V-1043, cuando abre "Mis ventas", entonces ve esas dos ventas y ninguna de otro cajero.
-- **CA-2** Dada una venta recién confirmada, cuando el cajero abre "Mis ventas", entonces la ve de primera.
-- **CA-3** Dado un cajero sin ventas hoy, cuando abre "Mis ventas", entonces ve "Aún no has registrado ventas hoy".
-- **CA-4** Dado que las ventas no se pueden cargar, cuando el cajero abre la sección, entonces ve "No se pudieron cargar tus ventas" y puede reintentar.
+```gherkin
+Escenario: CA-1
+  Dado que Carlos Ruiz registró las ventas V-1042 y V-1043
+  Cuando abre "Mis ventas"
+  Entonces ve esas dos ventas y ninguna de otro cajero
+
+Escenario: CA-2
+  Dada una venta recién confirmada
+  Cuando el cajero abre "Mis ventas"
+  Entonces la ve de primera
+
+Escenario: CA-3
+  Dado un cajero sin ventas hoy
+  Cuando abre "Mis ventas"
+  Entonces ve "Aún no has registrado ventas hoy"
+
+Escenario: CA-4
+  Dado que las ventas no se pueden cargar
+  Cuando el cajero abre la sección
+  Entonces ve "No se pudieron cargar tus ventas" y puede reintentar
+```
 
 ## Fuera de alcance
 
@@ -57,3 +78,4 @@ El cajero revisa las ventas que él mismo registró hoy.
 ## Historial
 
 - 0.1.0 · 2026-11-07 · Primera versión.
+- 0.2.0 · 2026-11-07 · Se agrega la historia de usuario y los criterios de aceptación pasan a Gherkin.

@@ -1,7 +1,7 @@
 ---
 id: F-06
 titulo: Reponer existencias
-version: 0.1.0
+version: 0.2.0
 fecha: 2026-11-07
 estado: borrador
 autores: [Jeanfer Rivera, Santiago Samboni, Miguel Ángel Blanco, Luis Miguel Delgado, Santiago Sierra]
@@ -14,6 +14,10 @@ depende_de: [F-05]
 ## Objetivo
 
 El administrador suma unidades a las existencias de un producto en una tienda, en un solo paso.
+
+## Historia de usuario
+
+**Como** administrador, **quiero** sumar unidades a las existencias de un producto en una tienda, **para** reponerlo antes de que se agote.
 
 ## Flujo principal
 
@@ -47,11 +51,32 @@ El administrador suma unidades a las existencias de un producto en una tienda, e
 
 ## Criterios de aceptación
 
-- **CA-1** Dado "Huevos AA ×30" con 8 existencias en Sede Norte, cuando el administrador repone 24 unidades, entonces ve 32 existencias y el estado pasa a "Disponible".
-- **CA-2** Dado "Huevos AA ×30" en Sede Norte y en Sede Sur, cuando el administrador repone en Sede Norte, entonces las existencias de Sede Sur no cambian.
-- **CA-3** Dado el aviso abierto, cuando el administrador escribe 0 unidades, entonces no puede registrar la reposición.
-- **CA-4** Dado el aviso abierto, cuando el administrador elige "Cancelar", entonces el aviso se cierra y las existencias no cambian.
-- **CA-5** Dado que la reposición no se puede registrar, cuando el administrador la confirma, entonces ve "No se pudo registrar la reposición" y las existencias no cambian.
+```gherkin
+Escenario: CA-1
+  Dado "Huevos AA ×30" con 8 existencias en Sede Norte
+  Cuando el administrador repone 24 unidades
+  Entonces ve 32 existencias y el estado pasa a "Disponible"
+
+Escenario: CA-2
+  Dado "Huevos AA ×30" en Sede Norte y en Sede Sur
+  Cuando el administrador repone en Sede Norte
+  Entonces las existencias de Sede Sur no cambian
+
+Escenario: CA-3
+  Dado el aviso abierto
+  Cuando el administrador escribe 0 unidades
+  Entonces no puede registrar la reposición
+
+Escenario: CA-4
+  Dado el aviso abierto
+  Cuando el administrador elige "Cancelar"
+  Entonces el aviso se cierra y las existencias no cambian
+
+Escenario: CA-5
+  Dado que la reposición no se puede registrar
+  Cuando el administrador la confirma
+  Entonces ve "No se pudo registrar la reposición" y las existencias no cambian
+```
 
 ## Fuera de alcance
 
@@ -64,3 +89,4 @@ El administrador suma unidades a las existencias de un producto en una tienda, e
 ## Historial
 
 - 0.1.0 · 2026-11-07 · Primera versión.
+- 0.2.0 · 2026-11-07 · Se agrega la historia de usuario y los criterios de aceptación pasan a Gherkin.

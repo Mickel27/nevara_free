@@ -1,7 +1,7 @@
 ---
 id: F-02
 titulo: Registrar venta
-version: 0.1.0
+version: 0.2.0
 fecha: 2026-11-07
 estado: borrador
 autores: [Jeanfer Rivera, Santiago Samboni, Miguel Ángel Blanco, Luis Miguel Delgado, Santiago Sierra]
@@ -14,6 +14,10 @@ depende_de: [F-01]
 ## Objetivo
 
 El cajero registra la venta de un cliente y las existencias de su tienda se descuentan solas.
+
+## Historia de usuario
+
+**Como** cajero, **quiero** registrar la venta de un cliente, **para** que las existencias de mi tienda se descuenten solas.
 
 ## Flujo principal
 
@@ -55,15 +59,52 @@ El cajero registra la venta de un cliente y las existencias de su tienda se desc
 
 ## Criterios de aceptación
 
-- **CA-1** Dado un catálogo con "Leche entera 1L", cuando el cajero escribe "P001" en la búsqueda, entonces ve solo ese producto.
-- **CA-2** Dado el catálogo completo, cuando el cajero elige la categoría "Lácteos", entonces ve solo productos de esa categoría.
-- **CA-3** Dada una venta con Leche ×3 a $4.200, Arroz ×2 a $5.800 y Banano ×1 a $3.200, cuando el cajero la revisa, entonces ve 6 unidades y un total de $27.400.
-- **CA-4** Dada una Leche entera 1L con 30 existencias, cuando el cajero confirma una venta con 3 unidades, entonces ve "Venta registrada" y las existencias de la leche pasan a 27.
-- **CA-5** Dado un producto con 0 existencias, cuando el cajero lo ve en el catálogo, entonces aparece como "Agotado" y no lo puede agregar.
-- **CA-6** Dado un producto con 8 existencias que ya tiene 8 unidades en la venta, cuando el cajero intenta subir la cantidad, entonces la cantidad sigue en 8.
-- **CA-7** Dada una venta en curso con productos, cuando el cajero elige "Cancelar venta", entonces la venta queda vacía y ninguna existencia cambia.
-- **CA-8** Dado el aviso de confirmación abierto, cuando el cajero elige "Cancelar", entonces el aviso se cierra y la venta en curso conserva sus productos.
-- **CA-9** Dado que la venta no se puede registrar, cuando el cajero confirma, entonces ve "No se pudo registrar la venta", la venta en curso se conserva y ninguna existencia cambia.
+```gherkin
+Escenario: CA-1
+  Dado un catálogo con "Leche entera 1L"
+  Cuando el cajero escribe "P001" en la búsqueda
+  Entonces ve solo ese producto
+
+Escenario: CA-2
+  Dado el catálogo completo
+  Cuando el cajero elige la categoría "Lácteos"
+  Entonces ve solo productos de esa categoría
+
+Escenario: CA-3
+  Dada una venta con Leche ×3 a $4.200, Arroz ×2 a $5.800 y Banano ×1 a $3.200
+  Cuando el cajero la revisa
+  Entonces ve 6 unidades y un total de $27.400
+
+Escenario: CA-4
+  Dada una Leche entera 1L con 30 existencias
+  Cuando el cajero confirma una venta con 3 unidades
+  Entonces ve "Venta registrada" y las existencias de la leche pasan a 27
+
+Escenario: CA-5
+  Dado un producto con 0 existencias
+  Cuando el cajero lo ve en el catálogo
+  Entonces aparece como "Agotado" y no lo puede agregar
+
+Escenario: CA-6
+  Dado un producto con 8 existencias que ya tiene 8 unidades en la venta
+  Cuando el cajero intenta subir la cantidad
+  Entonces la cantidad sigue en 8
+
+Escenario: CA-7
+  Dada una venta en curso con productos
+  Cuando el cajero elige "Cancelar venta"
+  Entonces la venta queda vacía y ninguna existencia cambia
+
+Escenario: CA-8
+  Dado el aviso de confirmación abierto
+  Cuando el cajero elige "Cancelar"
+  Entonces el aviso se cierra y la venta en curso conserva sus productos
+
+Escenario: CA-9
+  Dado que la venta no se puede registrar
+  Cuando el cajero confirma
+  Entonces ve "No se pudo registrar la venta", la venta en curso se conserva y ninguna existencia cambia
+```
 
 ## Fuera de alcance
 
@@ -78,3 +119,4 @@ El cajero registra la venta de un cliente y las existencias de su tienda se desc
 ## Historial
 
 - 0.1.0 · 2026-11-07 · Primera versión.
+- 0.2.0 · 2026-11-07 · Se agrega la historia de usuario y los criterios de aceptación pasan a Gherkin.

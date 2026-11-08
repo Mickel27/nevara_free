@@ -1,7 +1,7 @@
 ---
 id: F-09
 titulo: Eliminar producto
-version: 0.1.0
+version: 0.2.0
 fecha: 2026-11-07
 estado: borrador
 autores: [Jeanfer Rivera, Santiago Samboni, Miguel Ángel Blanco, Luis Miguel Delgado, Santiago Sierra]
@@ -14,6 +14,10 @@ depende_de: [F-05]
 ## Objetivo
 
 El administrador quita del catálogo un producto que la cadena ya no vende.
+
+## Historia de usuario
+
+**Como** administrador, **quiero** eliminar un producto que la cadena ya no vende, **para** que deje de aparecer en las tiendas.
 
 ## Flujo principal
 
@@ -43,10 +47,27 @@ El administrador quita del catálogo un producto que la cadena ya no vende.
 
 ## Criterios de aceptación
 
-- **CA-1** Dado "Agua 600 ml" en el inventario, cuando el administrador lo elimina y confirma, entonces ve "Producto eliminado" y el agua ya no aparece en ninguna tienda ni en el catálogo de venta.
-- **CA-2** Dada una venta registrada con "Agua 600 ml", cuando el administrador elimina el agua, entonces esa venta sigue en el historial con el agua en sus productos.
-- **CA-3** Dada la confirmación abierta, cuando el administrador elige "Cancelar", entonces el producto sigue en el inventario.
-- **CA-4** Dado que el producto no se puede eliminar, cuando el administrador confirma, entonces ve "No se pudo eliminar el producto" y el producto sigue en el inventario.
+```gherkin
+Escenario: CA-1
+  Dado "Agua 600 ml" en el inventario
+  Cuando el administrador lo elimina y confirma
+  Entonces ve "Producto eliminado" y el agua ya no aparece en ninguna tienda ni en el catálogo de venta
+
+Escenario: CA-2
+  Dada una venta registrada con "Agua 600 ml"
+  Cuando el administrador elimina el agua
+  Entonces esa venta sigue en el historial con el agua en sus productos
+
+Escenario: CA-3
+  Dada la confirmación abierta
+  Cuando el administrador elige "Cancelar"
+  Entonces el producto sigue en el inventario
+
+Escenario: CA-4
+  Dado que el producto no se puede eliminar
+  Cuando el administrador confirma
+  Entonces ve "No se pudo eliminar el producto" y el producto sigue en el inventario
+```
 
 ## Fuera de alcance
 
@@ -59,3 +80,4 @@ El administrador quita del catálogo un producto que la cadena ya no vende.
 ## Historial
 
 - 0.1.0 · 2026-11-07 · Primera versión.
+- 0.2.0 · 2026-11-07 · Se agrega la historia de usuario y los criterios de aceptación pasan a Gherkin.

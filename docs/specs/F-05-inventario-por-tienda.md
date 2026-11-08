@@ -1,7 +1,7 @@
 ---
 id: F-05
 titulo: Inventario por tienda
-version: 0.1.0
+version: 0.2.0
 fecha: 2026-11-07
 estado: borrador
 autores: [Jeanfer Rivera, Santiago Samboni, Miguel Ángel Blanco, Luis Miguel Delgado, Santiago Sierra]
@@ -14,6 +14,10 @@ depende_de: [F-01]
 ## Objetivo
 
 El administrador revisa las existencias de cualquier tienda y ve qué productos están bajos o agotados.
+
+## Historia de usuario
+
+**Como** administrador, **quiero** revisar el inventario de cualquier tienda, **para** saber qué productos están bajos o agotados.
 
 ## Flujo principal
 
@@ -46,12 +50,37 @@ El administrador revisa las existencias de cualquier tienda y ve qué productos 
 
 ## Criterios de aceptación
 
-- **CA-1** Dado "Huevos AA ×30" con 8 existencias y mínimo 10 en Sede Norte, cuando el administrador abre el inventario de Sede Norte, entonces lo ve como "Bajo stock".
-- **CA-2** Dado "Leche entera 1L" con 30 existencias en Sede Norte y 12 en Sede Sur, cuando el administrador cambia de Sede Norte a Sede Sur, entonces la leche pasa de mostrar 30 a mostrar 12.
-- **CA-3** Dado el inventario abierto, cuando el administrador filtra por "Frutas", entonces ve solo productos de esa categoría.
-- **CA-4** Dada una tienda con 25 productos, cuando el administrador abre su inventario, entonces ve 10 productos y puede pasar a la página 2.
-- **CA-5** Dada una búsqueda sin coincidencias, cuando el administrador escribe un código que no existe, entonces ve "No hay productos que coincidan".
-- **CA-6** Dado que el inventario no se puede cargar, cuando el administrador abre la sección, entonces ve "No se pudo cargar el inventario" y puede reintentar.
+```gherkin
+Escenario: CA-1
+  Dado "Huevos AA ×30" con 8 existencias y mínimo 10 en Sede Norte
+  Cuando el administrador abre el inventario de Sede Norte
+  Entonces lo ve como "Bajo stock"
+
+Escenario: CA-2
+  Dado "Leche entera 1L" con 30 existencias en Sede Norte y 12 en Sede Sur
+  Cuando el administrador cambia de Sede Norte a Sede Sur
+  Entonces la leche pasa de mostrar 30 a mostrar 12
+
+Escenario: CA-3
+  Dado el inventario abierto
+  Cuando el administrador filtra por "Frutas"
+  Entonces ve solo productos de esa categoría
+
+Escenario: CA-4
+  Dada una tienda con 25 productos
+  Cuando el administrador abre su inventario
+  Entonces ve 10 productos y puede pasar a la página 2
+
+Escenario: CA-5
+  Dada una búsqueda sin coincidencias
+  Cuando el administrador escribe un código que no existe
+  Entonces ve "No hay productos que coincidan"
+
+Escenario: CA-6
+  Dado que el inventario no se puede cargar
+  Cuando el administrador abre la sección
+  Entonces ve "No se pudo cargar el inventario" y puede reintentar
+```
 
 ## Fuera de alcance
 
@@ -64,3 +93,4 @@ El administrador revisa las existencias de cualquier tienda y ve qué productos 
 ## Historial
 
 - 0.1.0 · 2026-11-07 · Primera versión.
+- 0.2.0 · 2026-11-07 · Se agrega la historia de usuario y los criterios de aceptación pasan a Gherkin.

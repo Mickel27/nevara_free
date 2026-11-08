@@ -1,7 +1,7 @@
 ---
 id: F-08
 titulo: Editar producto
-version: 0.1.0
+version: 0.2.0
 fecha: 2026-11-07
 estado: borrador
 autores: [Jeanfer Rivera, Santiago Samboni, Miguel Ángel Blanco, Luis Miguel Delgado, Santiago Sierra]
@@ -14,6 +14,10 @@ depende_de: [F-05]
 ## Objetivo
 
 El administrador corrige los datos de un producto y define su mínimo de existencias en la tienda que está revisando.
+
+## Historia de usuario
+
+**Como** administrador, **quiero** editar los datos de un producto y su mínimo en una tienda, **para** mantener el catálogo al día.
 
 ## Flujo principal
 
@@ -46,10 +50,27 @@ El administrador corrige los datos de un producto y define su mínimo de existen
 
 ## Criterios de aceptación
 
-- **CA-1** Dado "Arroz blanco 1 kg" a $5.800, cuando el administrador cambia el precio a $6.000 y guarda, entonces ve "Producto actualizado" y el arroz aparece a $6.000 en el inventario y en el catálogo de venta.
-- **CA-2** Dado "Banano ×kg" con 42 existencias y mínimo 12 en Sede Norte, cuando el administrador cambia el mínimo a 45, entonces el banano pasa a "Bajo stock" en Sede Norte y su estado en las demás tiendas no cambia.
-- **CA-3** Dado el formulario de edición, cuando el administrador borra el nombre y elige "Guardar", entonces el sistema señala el nombre como obligatorio y no guarda.
-- **CA-4** Dado que el producto no se puede guardar, cuando el administrador elige "Guardar", entonces ve "No se pudo actualizar el producto" y sus cambios se conservan.
+```gherkin
+Escenario: CA-1
+  Dado "Arroz blanco 1 kg" a $5.800
+  Cuando el administrador cambia el precio a $6.000 y guarda
+  Entonces ve "Producto actualizado" y el arroz aparece a $6.000 en el inventario y en el catálogo de venta
+
+Escenario: CA-2
+  Dado "Banano ×kg" con 42 existencias y mínimo 12 en Sede Norte
+  Cuando el administrador cambia el mínimo a 45
+  Entonces el banano pasa a "Bajo stock" en Sede Norte y su estado en las demás tiendas no cambia
+
+Escenario: CA-3
+  Dado el formulario de edición
+  Cuando el administrador borra el nombre y elige "Guardar"
+  Entonces el sistema señala el nombre como obligatorio y no guarda
+
+Escenario: CA-4
+  Dado que el producto no se puede guardar
+  Cuando el administrador elige "Guardar"
+  Entonces ve "No se pudo actualizar el producto" y sus cambios se conservan
+```
 
 ## Fuera de alcance
 
@@ -62,3 +83,4 @@ El administrador corrige los datos de un producto y define su mínimo de existen
 ## Historial
 
 - 0.1.0 · 2026-11-07 · Primera versión.
+- 0.2.0 · 2026-11-07 · Se agrega la historia de usuario y los criterios de aceptación pasan a Gherkin.

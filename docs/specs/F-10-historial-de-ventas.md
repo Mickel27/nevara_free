@@ -1,7 +1,7 @@
 ---
 id: F-10
 titulo: Historial de ventas
-version: 0.1.0
+version: 0.2.0
 fecha: 2026-11-07
 estado: borrador
 autores: [Jeanfer Rivera, Santiago Samboni, Miguel Ángel Blanco, Luis Miguel Delgado, Santiago Sierra]
@@ -14,6 +14,10 @@ depende_de: [F-02]
 ## Objetivo
 
 El administrador revisa las ventas de toda la cadena y cuánto se vendió.
+
+## Historia de usuario
+
+**Como** administrador, **quiero** consultar las ventas de la cadena, **para** saber cuánto se vendió por tienda y fecha.
 
 ## Flujo principal
 
@@ -44,11 +48,32 @@ El administrador revisa las ventas de toda la cadena y cuánto se vendió.
 
 ## Criterios de aceptación
 
-- **CA-1** Dadas 138 ventas hoy por $4.860.200, cuando el administrador abre el historial, entonces ve 138 ventas, total vendido $4.860.200 y valor promedio $35.219.
-- **CA-2** Dado el historial abierto, cuando el administrador filtra por "Sede Sur", entonces ve solo ventas de Sede Sur y los totales cambian.
-- **CA-3** Dado el historial abierto, cuando el administrador busca "V-1043", entonces ve solo esa venta.
-- **CA-4** Dado un día sin ventas, cuando el administrador lo elige en el filtro de fecha, entonces ve "No hay ventas para este filtro" y los totales en 0.
-- **CA-5** Dado que las ventas no se pueden cargar, cuando el administrador abre el historial, entonces ve "No se pudo cargar el historial" y puede reintentar.
+```gherkin
+Escenario: CA-1
+  Dadas 138 ventas hoy por $4.860.200
+  Cuando el administrador abre el historial
+  Entonces ve 138 ventas, total vendido $4.860.200 y valor promedio $35.219
+
+Escenario: CA-2
+  Dado el historial abierto
+  Cuando el administrador filtra por "Sede Sur"
+  Entonces ve solo ventas de Sede Sur y los totales cambian
+
+Escenario: CA-3
+  Dado el historial abierto
+  Cuando el administrador busca "V-1043"
+  Entonces ve solo esa venta
+
+Escenario: CA-4
+  Dado un día sin ventas
+  Cuando el administrador lo elige en el filtro de fecha
+  Entonces ve "No hay ventas para este filtro" y los totales en 0
+
+Escenario: CA-5
+  Dado que las ventas no se pueden cargar
+  Cuando el administrador abre el historial
+  Entonces ve "No se pudo cargar el historial" y puede reintentar
+```
 
 ## Fuera de alcance
 
@@ -62,3 +87,4 @@ El administrador revisa las ventas de toda la cadena y cuánto se vendió.
 ## Historial
 
 - 0.1.0 · 2026-11-07 · Primera versión.
+- 0.2.0 · 2026-11-07 · Se agrega la historia de usuario y los criterios de aceptación pasan a Gherkin.

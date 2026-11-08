@@ -1,7 +1,7 @@
 ---
 id: F-07
 titulo: Agregar producto
-version: 0.1.0
+version: 0.2.0
 fecha: 2026-11-07
 estado: borrador
 autores: [Jeanfer Rivera, Santiago Samboni, Miguel Ángel Blanco, Luis Miguel Delgado, Santiago Sierra]
@@ -14,6 +14,10 @@ depende_de: [F-05]
 ## Objetivo
 
 El administrador agrega un producto nuevo al catálogo de la cadena.
+
+## Historia de usuario
+
+**Como** administrador, **quiero** agregar un producto al catálogo, **para** que se pueda reponer y vender en las tiendas.
 
 ## Flujo principal
 
@@ -46,11 +50,32 @@ El administrador agrega un producto nuevo al catálogo de la cadena.
 
 ## Criterios de aceptación
 
-- **CA-1** Dado el inventario abierto, cuando el administrador agrega "Yogur fresa 1L" con código P250, categoría Lácteos, precio $6.900 y unidad "und.", entonces ve "Producto agregado" y el yogur aparece en el inventario con 0 existencias.
-- **CA-2** Dado un producto recién agregado, cuando un cajero abre el catálogo de venta, entonces lo ve como "Agotado".
-- **CA-3** Dado que ya existe el código P001, cuando el administrador intenta agregar otro producto con P001, entonces ve "Ya existe un producto con ese código" y no se agrega.
-- **CA-4** Dado el formulario sin nombre, cuando el administrador elige "Guardar", entonces el sistema señala el nombre como obligatorio y no guarda.
-- **CA-5** Dado que el producto no se puede guardar, cuando el administrador elige "Guardar", entonces ve "No se pudo agregar el producto" y sus datos se conservan.
+```gherkin
+Escenario: CA-1
+  Dado el inventario abierto
+  Cuando el administrador agrega "Yogur fresa 1L" con código P250, categoría Lácteos, precio $6.900 y unidad "und."
+  Entonces ve "Producto agregado" y el yogur aparece en el inventario con 0 existencias
+
+Escenario: CA-2
+  Dado un producto recién agregado
+  Cuando un cajero abre el catálogo de venta
+  Entonces lo ve como "Agotado"
+
+Escenario: CA-3
+  Dado que ya existe el código P001
+  Cuando el administrador intenta agregar otro producto con P001
+  Entonces ve "Ya existe un producto con ese código" y no se agrega
+
+Escenario: CA-4
+  Dado el formulario sin nombre
+  Cuando el administrador elige "Guardar"
+  Entonces el sistema señala el nombre como obligatorio y no guarda
+
+Escenario: CA-5
+  Dado que el producto no se puede guardar
+  Cuando el administrador elige "Guardar"
+  Entonces ve "No se pudo agregar el producto" y sus datos se conservan
+```
 
 ## Fuera de alcance
 
@@ -64,3 +89,4 @@ El administrador agrega un producto nuevo al catálogo de la cadena.
 ## Historial
 
 - 0.1.0 · 2026-11-07 · Primera versión.
+- 0.2.0 · 2026-11-07 · Se agrega la historia de usuario y los criterios de aceptación pasan a Gherkin.

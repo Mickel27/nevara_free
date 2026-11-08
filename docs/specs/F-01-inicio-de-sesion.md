@@ -1,7 +1,7 @@
 ---
 id: F-01
 titulo: Inicio de sesión
-version: 0.1.0
+version: 0.2.0
 fecha: 2026-11-07
 estado: borrador
 autores: [Jeanfer Rivera, Santiago Samboni, Miguel Ángel Blanco, Luis Miguel Delgado, Santiago Sierra]
@@ -14,6 +14,10 @@ depende_de: []
 ## Objetivo
 
 El cajero y el administrador entran a la app con su cuenta y ven solo las opciones de su rol.
+
+## Historia de usuario
+
+**Como** usuario de NevaraFresh (cajero o administrador), **quiero** iniciar sesión con mi cuenta, **para** acceder solo a las opciones de mi rol.
 
 ## Flujo principal
 
@@ -46,11 +50,32 @@ El cajero y el administrador entran a la app con su cuenta y ven solo las opcion
 
 ## Criterios de aceptación
 
-- **CA-1** Dado un administrador con cuenta activa, cuando inicia sesión con su correo y contraseña, entonces ve el resumen de la cadena y su menú tiene Dashboard, Inventario e Historial de ventas.
-- **CA-2** Dado un cajero con cuenta activa, cuando inicia sesión, entonces ve el punto de venta de su tienda y su menú tiene Punto de venta, Stock de mi tienda y Mis ventas.
-- **CA-3** Dado el inicio de sesión, cuando el usuario elige "Demo cajero", entonces entra como cajero de demostración sin escribir credenciales.
-- **CA-4** Dado un correo con una contraseña equivocada, cuando el usuario intenta entrar, entonces ve "Correo o contraseña incorrectos" y sigue en el inicio de sesión.
-- **CA-5** Dado un usuario dentro de la app, cuando cierra sesión, entonces vuelve al inicio de sesión y volver atrás no lo regresa a la app.
+```gherkin
+Escenario: CA-1
+  Dado un administrador con cuenta activa
+  Cuando inicia sesión con su correo y contraseña
+  Entonces ve el resumen de la cadena y su menú tiene Dashboard, Inventario e Historial de ventas
+
+Escenario: CA-2
+  Dado un cajero con cuenta activa
+  Cuando inicia sesión
+  Entonces ve el punto de venta de su tienda y su menú tiene Punto de venta, Stock de mi tienda y Mis ventas
+
+Escenario: CA-3
+  Dado el inicio de sesión
+  Cuando el usuario elige "Demo cajero"
+  Entonces entra como cajero de demostración sin escribir credenciales
+
+Escenario: CA-4
+  Dado un correo con una contraseña equivocada
+  Cuando el usuario intenta entrar
+  Entonces ve "Correo o contraseña incorrectos" y sigue en el inicio de sesión
+
+Escenario: CA-5
+  Dado un usuario dentro de la app
+  Cuando cierra sesión
+  Entonces vuelve al inicio de sesión y volver atrás no lo regresa a la app
+```
 
 ## Fuera de alcance
 
@@ -64,3 +89,4 @@ El cajero y el administrador entran a la app con su cuenta y ven solo las opcion
 ## Historial
 
 - 0.1.0 · 2026-11-07 · Primera versión.
+- 0.2.0 · 2026-11-07 · Se agrega la historia de usuario y los criterios de aceptación pasan a Gherkin.
