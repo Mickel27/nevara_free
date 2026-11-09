@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'routes/app_routes.dart';
 import 'theme/app_theme.dart';
 
-// Tarea 0: main mínimo. En la Tarea 8 se agregan las rutas.
 void main() {
   runApp(const NevaraFreshApp());
 }
@@ -15,9 +15,8 @@ class NevaraFreshApp extends StatelessWidget {
       title: 'NevaraFresh',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const Scaffold(
-        body: Center(child: Text('NevaraFresh · en construcción')),
-      ),
+      initialRoute: AppRoutes.login,
+      routes: AppRoutes.routes,
     );
   }
 }
