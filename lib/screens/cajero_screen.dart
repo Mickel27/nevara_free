@@ -203,8 +203,9 @@ class _CajeroScreenState extends State<CajeroScreen> {
     }
   }
 
-  void _cerrarSesion() {
-    AuthService.instancia.cerrarSesion();
+  Future<void> _cerrarSesion() async {
+    await AuthService.instancia.cerrarSesion();
+    if (!mounted) return;
     Navigator.pushNamedAndRemoveUntil(context, AppRoutes.login, (route) => false);
   }
 
@@ -272,7 +273,7 @@ class _CajeroScreenState extends State<CajeroScreen> {
           categorias: _categorias,
           categoriaSeleccionada: _categoriaVenta,
           carrito: List.unmodifiable(_carrito),
-          numeroVenta: VentaService.instancia.siguienteNumero,
+          numeroVenta: 'Nuevo ticket',
           nombreCajero: usuario.nombre,
           registrando: _registrando,
           onBuscar: (t) => setState(() => _busquedaVenta = t),

@@ -57,6 +57,7 @@ class _AdminScreenState extends State<AdminScreen> {
   String? _tiendaDashboard; // null = todas
   String _tiendaInventario = 't1';
   String _busquedaInventario = '';
+  Map<String, String> _nombresCajero = {};
   String? _categoriaInventario;
   int _pagina = 1;
   String _busquedaHistorial = '';
@@ -85,11 +86,13 @@ class _AdminScreenState extends State<AdminScreen> {
     try {
       final tiendas = await CatalogoService.instancia.tiendas();
       final categorias = await CatalogoService.instancia.categorias();
+      final nombresCajero = await AuthService.instancia.nombresUsuarios();
       await _recargar();
       if (!mounted) return;
       setState(() {
         _tiendas = tiendas;
         _categorias = categorias;
+        _nombresCajero = nombresCajero;
         if (tiendas.isNotEmpty) _tiendaInventario = tiendas.first.id;
         _cargando = false;
       });
@@ -227,8 +230,9 @@ class _AdminScreenState extends State<AdminScreen> {
     }
   }
 
-  void _cerrarSesion() {
-    AuthService.instancia.cerrarSesion();
+  Future<void> _cerrarSesion() async {
+    await AuthService.instancia.cerrarSesion();
+    if (!mounted) return;
     Navigator.pushNamedAndRemoveUntil(context, AppRoutes.login, (route) => false);
   }
 
@@ -408,7 +412,7 @@ class _AdminScreenState extends State<AdminScreen> {
   Widget _historial() {
     final hoy = DateTime.now();
     final dia = DateTime(hoy.year, hoy.month, hoy.day - _diasAtrasHistorial);
-    final nombresCajero = {for (final v in _ventas) v.idUsuario: AuthService.instancia.nombreDe(v.idUsuario)};
+    final nombresCajero = _nombresCajero;
     final texto = _busquedaHistorial.trim().toLowerCase().replaceAll('#', '');
 
     final ventas = _ventas

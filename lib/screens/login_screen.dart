@@ -20,6 +20,22 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _cargando = false;
   String? _error;
 
+  @override
+  void initState() {
+    super.initState();
+    _verificarSesionActiva();
+  }
+
+  Future<void> _verificarSesionActiva() async {
+    final usuario = await AuthService.instancia.restaurarSesion();
+    if (!mounted || usuario == null) return;
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      usuario.rol == Rol.administrador ? AppRoutes.admin : AppRoutes.cajero,
+      (route) => false,
+    );
+  }
+
   Future<void> _entrar(Future<Usuario> Function() accion) async {
     setState(() {
       _cargando = true;
