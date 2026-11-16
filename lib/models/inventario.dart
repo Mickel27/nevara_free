@@ -15,6 +15,15 @@ class Inventario {
     required this.minimo,
   });
 
+  factory Inventario.fromMap(Map<String, dynamic> map) {
+    return Inventario(
+      idTienda: map['id_tienda'] as String,
+      idProducto: map['id_producto'] as String,
+      existencias: (map['stock_actual'] as num).toInt(),
+      minimo: (map['stock_minimo'] as num).toInt(),
+    );
+  }
+
   /// Regla de docs/modelo.md: Agotado con 0, Bajo stock si
   /// existencias <= mínimo, Disponible en otro caso.
   EstadoStock get estado {

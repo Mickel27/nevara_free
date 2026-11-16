@@ -19,6 +19,18 @@ class Usuario {
     this.activo = true,
   });
 
+  factory Usuario.fromMap(Map<String, dynamic> map) {
+    final rolTexto = map['rol'] as String;
+    return Usuario(
+      id: map['id_usuario'] as String,
+      nombre: map['nombre_completo'] as String,
+      correo: map['correo'] as String,
+      rol: rolTexto == 'administrador' ? Rol.administrador : Rol.cajero,
+      idTienda: map['id_tienda'] as String?,
+      activo: (map['activo'] as bool?) ?? true,
+    );
+  }
+
   /// "Laura Gómez" -> "LG".
   String get iniciales {
     final partes = nombre.trim().split(' ').where((p) => p.isNotEmpty).toList();

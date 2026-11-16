@@ -14,5 +14,14 @@ class DetalleVenta {
     required this.precioUnitario,
   });
 
+  factory DetalleVenta.fromMap(Map<String, dynamic> map) {
+    return DetalleVenta(
+      idProducto: map['id_producto'] as String,
+      nombreProducto: map['nombre_producto'] as String,
+      cantidad: (map['cantidad'] as num).toInt(),
+      precioUnitario: (map['precio_unitario'] as num).toInt(),
+    );
+  }
+
   int get subtotal => cantidad * precioUnitario;
 }

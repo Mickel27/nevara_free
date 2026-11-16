@@ -19,6 +19,22 @@ class Venta {
     required this.detalles,
   });
 
+  factory Venta.fromMap(Map<String, dynamic> map) {
+    final listaDetalles =
+        (map['detalle_ventas'] ?? map['detalles'] ?? const []) as List<dynamic>;
+    return Venta(
+      id: map['id_venta'].toString(),
+      numero: map['numero_ticket'] as String,
+      idTienda: map['id_tienda'] as String,
+      idUsuario: map['id_usuario'] as String,
+      fechaHora: DateTime.parse(map['fecha_hora'] as String).toLocal(),
+      detalles: [
+        for (final item in listaDetalles)
+          DetalleVenta.fromMap(item as Map<String, dynamic>),
+      ],
+    );
+  }
+
   int get total => detalles.fold(0, (suma, d) => suma + d.subtotal);
 
   int get unidades => detalles.fold(0, (suma, d) => suma + d.cantidad);
